@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>tic tac toe</title>
+</head>
+
+<body>
+    <div id="generalContainer">
+
+        <form action="" id="playerForm">
+            <div id="playerOneContainer" class="playerContainer">
+                <label for="nameOne">Player 1 name:</label>
+                <input type="text" id="nameOne">
+
+                <label for="token1">Please choose your token</label>
+                <select id="token1">
+                    <option value="X" selected>X</option>
+                    <option value="O">O</option>
+                </select>
+
+                <button type="button">Set player info</button>
+            </div>
+
+            <div id="playerTwoContainer" class="playerContainer">
+                <label for="nameTwo">Player 2 name:</label>
+                <input type="text" id="nameTwo">
+
+                <label for="token2">Please choose your token</label>
+                <select id="token2">
+                    <option value="X">X</option>
+                    <option value="O" selected>O</option>
+                </select>
+
+                <button type="button">Set player info</button>
+            </div>
+        </form>
+
+
+        <div id="boardContainer">
+            <div id="1" class="boardCase"></div>
+            <div id="2" class="boardCase"></div>
+            <div id="3" class="boardCase"></div>
+            <div id="4" class="boardCase"></div>
+            <div id="5" class="boardCase"></div>
+            <div id="6" class="boardCase"></div>
+            <div id="7" class="boardCase"></div>
+            <div id="8" class="boardCase"></div>
+            <div id="9" class="boardCase"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>
