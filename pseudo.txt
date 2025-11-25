@@ -1,33 +1,4 @@
 1-Debemos intentar tener el menor codigo global posible, esto es el objetivo
 principal pues ya debemos aprender si o si como hacer esto.
 
-Que hay que lograr:
-
--Un formulario donde pongamos el nombre del jugador y la ficha que 
-escoja (como haremos para que si uno escoje X el otro ya no pueda escoger
-esta opcion? POR EL MOMENTO SIMPLEMENTE CREAREMOS LOS OBJETOS Y YA VEREMOS DEPSUES).
- Este formulario se usara para crear un objeto llamado players dentro del
-cual tendremos 2 objetos mas uno llamado player 1 y uno player 2 cada uno con su respectiva
-ficha. (crear ua FF o CF para crear a los jugadores) como haremos tambien para que no permita
-agregar mas de dos usuarios.
-
--Un tablero con 9 divs cada uno con un id segun su posicion:
-Como hacemos para asociar cada casilla de la cuadricula con su respectivo lugar en la matriz?
-(array). R: a cada div le pondremos un numero como id si por ejemplo el div con el id 1 es
-clickeado sabemos que es el div mas a ala izquierda y mas arriba entonces fila 1 columna uno
-que en el array se traduciria como 0 (fila 1),0 (columna 1). Entonces haremos
-let id = e.target.id let  coordinates= coordinates[id] osea coordinates tendra un array de 2 cooordenadas
-y despues tablero[coordinates[0]][coordinates[1]] = ficha ... COMENZAREMOS
-LOS ID DESDE 0 para los divs Y LE PONDREMOS +ID para convertirlo en numero y poder usarlo
-directamnete asi podremos hacer una funcion getCoordinates o algo por el
-estilo
-
--Como hacemos para cambiar de jugador y de ficha despues de cada click en una casilla?
-
--crearemos una funcion checkForWinnner que cada que se coloque una ficha cheque la condicion
-de cumplimiento (como crearemos la condicion de cumplimiento?) pista : una funcion que recorra
-de atras hacia adelante en horizontal, vertical y diagonal (agarrar las 4 )
-
--si se hace click sobre el tablero sin haber seteado nada entonces el nombre del jugador
-1 sera player 1 y el del 2 player 2 y los tokens se quedaran tal cual estan, como lo 
-hacemos?
+falta crear la funcion checkForWinner y terminamos
