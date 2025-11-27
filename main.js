@@ -76,12 +76,72 @@ function putTokenInArray(caseInfo, players) {
 
 /*-------------------------------------------------------------------------------*/
 
-function switchPlayer () {
+function switchPlayer() {
     if (currentPlayer === 1) {
         currentPlayer = 2;
     } else if (currentPlayer === 2) {
         currentPlayer = 1;
     }
+}
+/*-------------------------------------------------------------------------------*/
+
+function announceWinner(players) {
+    if (currentPlayer === 1 && players.player1.name === undefined) {
+        alert('Player 1 won the game');
+    } else if (currentPlayer === 2 && players.player2.name === undefined) {
+        alert('Player 2 won the game');
+    } else if (currentPlayer === 1) {
+        alert(`${players.player1.name} won the game`);
+    } else if (currentPlayer === 2) {
+        alert(`${players.player2.name} won the game`);
+    }
+}
+
+
+function checkForWinner(players) {
+    if (arrayBoard[0][0] === 'X' && arrayBoard[0][1] === 'X' && arrayBoard[0][2] === 'X' ||
+        arrayBoard[0][0] === 'O' && arrayBoard[0][1] === 'O' && arrayBoard[0][2] === 'O' ||
+        arrayBoard[1][0] === 'X' && arrayBoard[1][1] === 'X' && arrayBoard[1][2] === 'X' ||
+        arrayBoard[1][0] === 'O' && arrayBoard[1][1] === 'O' && arrayBoard[1][2] === 'O' ||
+        arrayBoard[2][0] === 'X' && arrayBoard[2][1] === 'X' && arrayBoard[2][2] === 'X' ||
+        arrayBoard[2][0] === 'O' && arrayBoard[2][1] === 'O' && arrayBoard[2][2] === 'O' ||
+        arrayBoard[0][0] === 'X' && arrayBoard[1][0] === 'X' && arrayBoard[2][0] === 'X' ||
+        arrayBoard[0][0] === 'O' && arrayBoard[1][0] === 'O' && arrayBoard[2][0] === 'O' ||
+        arrayBoard[0][1] === 'X' && arrayBoard[1][1] === 'X' && arrayBoard[2][1] === 'X' ||
+        arrayBoard[0][1] === 'O' && arrayBoard[1][1] === 'O' && arrayBoard[2][1] === 'O' ||
+        arrayBoard[0][2] === 'X' && arrayBoard[1][2] === 'X' && arrayBoard[2][2] === 'X' ||
+        arrayBoard[0][2] === 'O' && arrayBoard[1][2] === 'O' && arrayBoard[2][2] === 'O' ||
+        arrayBoard[0][0] === 'X' && arrayBoard[1][1] === 'X' && arrayBoard[2][2] === 'X' ||
+        arrayBoard[0][0] === 'O' && arrayBoard[1][1] === 'O' && arrayBoard[2][2] === 'O' ||
+        arrayBoard[0][2] === 'X' && arrayBoard[1][1] === 'X' && arrayBoard[2][0] === 'X' ||
+        arrayBoard[0][2] === 'O' && arrayBoard[1][1] === 'O' && arrayBoard[2][0] === 'O'
+    ) {
+        announceWinner(players);
+        clearBoard();
+    }
+}
+
+/*-------------------------------------------------------------------------------*/
+
+function clearBoard() {
+    let boardCases = document.querySelectorAll('.boardCase');
+    boardCases.forEach(function(value){
+        value.innerHTML = '';
+    })
+
+    arrayBoard = (function () {
+        let boardArray = [];
+
+        for (let i = 0; i < 3; i++) {
+            boardArray[i] = [];
+            for (let j = 0; j < 3; j++) {
+                boardArray[i][j] = '';
+            }
+        }
+
+        return boardArray;
+    })();
+
 }
 
 /*-------------------------------------------------------------------------------*/
@@ -91,9 +151,6 @@ function playGame(e) {
     let caseInfo = getCaseinfo(e);
     displayTokenInCase(e, players);
     putTokenInArray(caseInfo, players);
+    checkForWinner(players);
     switchPlayer();
-
-    
-
-    console.log(arrayBoard);
 }

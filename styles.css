@@ -4,6 +4,59 @@
     padding: 0px;
 }
 
+.one {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.two {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.three {
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    
+}
+
+.four {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.five {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.six {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.seven {
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.eight {
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.nine {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+}
+
 body {
     display: flex;
     width: 100%;
@@ -12,24 +65,44 @@ body {
     align-items: center;
 }
 
+input {
+    border: 1px solid rgb(152, 152, 245);
+    border-radius: 3px;
+    width: 185px;
+    height: 15px;
+    padding: 5px;
+    font-size: 15px;
+}
+
+select {
+   border-radius: 4px;
+   background-color: white;
+   width: 40px;
+   height: 25px;
+   padding:3px;
+}
+
 #generalContainer {
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
     padding: 30px;
-    border: 5px dashed magenta;
     width: 800px;
     height: 800px;
 }
 
 #playerForm {
     width: 100%;
+    font-size: 18px;
+    background-color: bisque;
+    border-radius: 10px;
     height: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 90px;
+    margin-bottom: 50px;
 }
 
 .playerContainer {
@@ -58,5 +131,5 @@ body {
     width: calc(100%/3);
     height: calc(100%/3);
     box-sizing: border-box;
-    border: 1px solid black;
 }
+
