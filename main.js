@@ -125,7 +125,7 @@ function checkForWinner(players) {
 
 function clearBoard() {
     let boardCases = document.querySelectorAll('.boardCase');
-    boardCases.forEach(function(value){
+    boardCases.forEach(function (value) {
         value.innerHTML = '';
     })
 
@@ -151,6 +151,9 @@ function playGame(e) {
     let caseInfo = getCaseinfo(e);
     displayTokenInCase(e, players);
     putTokenInArray(caseInfo, players);
-    checkForWinner(players);
-    switchPlayer();
+    setTimeout(function () {
+        checkForWinner(players);
+        switchPlayer();
+    },100);
+
 }
