@@ -1,18 +1,21 @@
 let boardGame = document.querySelector('#boardContainer');
 boardGame.addEventListener('click', playGame);
 
+let resetButton = document.querySelector('#resetButton');
+resetButton.addEventListener('click', clearBoard);
+
 let currentPlayer = 1;
 
 const winningCombinations = [
-    
+
     [[0, 0], [0, 1], [0, 2]],
     [[1, 0], [1, 1], [1, 2]],
     [[2, 0], [2, 1], [2, 2]],
-    
+
     [[0, 0], [1, 0], [2, 0]],
     [[0, 1], [1, 1], [2, 1]],
     [[0, 2], [1, 2], [2, 2]],
-    
+
     [[0, 0], [1, 1], [2, 2]],
     [[0, 2], [1, 1], [2, 0]]
 ];
@@ -112,21 +115,32 @@ function announceWinner(players) {
 }
 
 function checkForWinner(players) {
-    
+
     for (let combo of winningCombinations) {
-        
-        const [a, b, c] = combo; 
+
+        const [a, b, c] = combo;
 
         const valueA = arrayBoard[a[0]][a[1]];
         const valueB = arrayBoard[b[0]][b[1]];
         const valueC = arrayBoard[c[0]][c[1]];
-        
+
         if (valueA !== '' && valueA === valueB && valueA === valueC) {
             announceWinner(players);
             clearBoard();
-            return; 
+            return;
         }
     }
+
+    const isBoardFull = arrayBoard.every(function (row) {
+        return row.every(function (cell) {
+            return cell !== '';
+        });
+    });
+
+    if (isBoardFull) {
+        alert("It's a draw!");
+        clearBoard();
+    } 
 }
 
 /*-------------------------------------------------------------------------------*/
@@ -162,6 +176,6 @@ function playGame(e) {
     setTimeout(function () {
         checkForWinner(players);
         switchPlayer();
-    },100);
+    }, 100);
 
 }
