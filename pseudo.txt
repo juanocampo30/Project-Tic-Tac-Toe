@@ -1,2 +1,0 @@
-1-Debemos intentar tener el menor codigo global posible, esto es el objetivo
-principal pues ya debemos aprender si o si como hacer esto.

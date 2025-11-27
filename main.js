@@ -3,6 +3,20 @@ boardGame.addEventListener('click', playGame);
 
 let currentPlayer = 1;
 
+const winningCombinations = [
+    
+    [[0, 0], [0, 1], [0, 2]],
+    [[1, 0], [1, 1], [1, 2]],
+    [[2, 0], [2, 1], [2, 2]],
+    
+    [[0, 0], [1, 0], [2, 0]],
+    [[0, 1], [1, 1], [2, 1]],
+    [[0, 2], [1, 2], [2, 2]],
+    
+    [[0, 0], [1, 1], [2, 2]],
+    [[0, 2], [1, 1], [2, 0]]
+];
+
 /*-------------------------------------------------------------------------------*/
 
 let arrayBoard = (function () {
@@ -97,27 +111,21 @@ function announceWinner(players) {
     }
 }
 
-
 function checkForWinner(players) {
-    if (arrayBoard[0][0] === 'X' && arrayBoard[0][1] === 'X' && arrayBoard[0][2] === 'X' ||
-        arrayBoard[0][0] === 'O' && arrayBoard[0][1] === 'O' && arrayBoard[0][2] === 'O' ||
-        arrayBoard[1][0] === 'X' && arrayBoard[1][1] === 'X' && arrayBoard[1][2] === 'X' ||
-        arrayBoard[1][0] === 'O' && arrayBoard[1][1] === 'O' && arrayBoard[1][2] === 'O' ||
-        arrayBoard[2][0] === 'X' && arrayBoard[2][1] === 'X' && arrayBoard[2][2] === 'X' ||
-        arrayBoard[2][0] === 'O' && arrayBoard[2][1] === 'O' && arrayBoard[2][2] === 'O' ||
-        arrayBoard[0][0] === 'X' && arrayBoard[1][0] === 'X' && arrayBoard[2][0] === 'X' ||
-        arrayBoard[0][0] === 'O' && arrayBoard[1][0] === 'O' && arrayBoard[2][0] === 'O' ||
-        arrayBoard[0][1] === 'X' && arrayBoard[1][1] === 'X' && arrayBoard[2][1] === 'X' ||
-        arrayBoard[0][1] === 'O' && arrayBoard[1][1] === 'O' && arrayBoard[2][1] === 'O' ||
-        arrayBoard[0][2] === 'X' && arrayBoard[1][2] === 'X' && arrayBoard[2][2] === 'X' ||
-        arrayBoard[0][2] === 'O' && arrayBoard[1][2] === 'O' && arrayBoard[2][2] === 'O' ||
-        arrayBoard[0][0] === 'X' && arrayBoard[1][1] === 'X' && arrayBoard[2][2] === 'X' ||
-        arrayBoard[0][0] === 'O' && arrayBoard[1][1] === 'O' && arrayBoard[2][2] === 'O' ||
-        arrayBoard[0][2] === 'X' && arrayBoard[1][1] === 'X' && arrayBoard[2][0] === 'X' ||
-        arrayBoard[0][2] === 'O' && arrayBoard[1][1] === 'O' && arrayBoard[2][0] === 'O'
-    ) {
-        announceWinner(players);
-        clearBoard();
+    
+    for (let combo of winningCombinations) {
+        
+        const [a, b, c] = combo; 
+
+        const valueA = arrayBoard[a[0]][a[1]];
+        const valueB = arrayBoard[b[0]][b[1]];
+        const valueC = arrayBoard[c[0]][c[1]];
+        
+        if (valueA !== '' && valueA === valueB && valueA === valueC) {
+            announceWinner(players);
+            clearBoard();
+            return; 
+        }
     }
 }
 
